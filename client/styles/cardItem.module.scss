@@ -1,0 +1,41 @@
+@import "./variables";
+.cardItem_link{
+  width: 100%;
+}
+.cardItem__article{
+  flex-wrap: wrap;
+  padding: 16px;
+  display: flex;
+  background: $color-ffffff;
+  align-items: center;
+  width: inherit;
+  gap: 16px;
+  border-top: 1px solid $color-EEEEEE;
+  border-radius: 4px;
+  min-width: 180px;
+
+  // &_img{
+  //   border-radius: 4px;
+  //   object-fit: contain;
+  //   object-position: center;
+  // }
+  &_detail{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap:  16px ;
+    width: 60%;
+    .detail_price{
+      font-size: 24px;
+    }
+    .detail_title{
+      font-size: 18px;
+    }
+
+  }
+  .detail_location{
+    font-size: 12px;
+    padding: 0 50px;
+
+  }
+}

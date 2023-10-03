@@ -1,0 +1,10 @@
+@import "./variables";
+
+.button_component {
+  background: $color-3483FA;
+  color: $color-ffffff;
+  width: 100%;
+  padding: 16px ;
+  font-size: 24px;
+  border-radius: 8px;
+}
