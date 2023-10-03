@@ -4,14 +4,14 @@ const fetchSearchItems = async (id) => {
     .catch(() => { throw new Error() })
 }
 const fetchItemDetail = async (id) => {
-  return fetch('https://api.mercadolibre.com/items/MLA632938595', { cache: 'no-store' })
+  return fetch(`https://api.mercadolibre.com/items/${id}`, { cache: 'no-store' })
     .then(res => res.json())
     .catch(() => { throw new Error() })
 }
 
-const fetchDescription = async (id) => {
-  return fetch('https://api.mercadolibre.com/items/MLA935110000/description', { cache: 'no-store' })
+const fetchItemDescription = async (id) => {
+  return fetch(`https://api.mercadolibre.com/items/${id}/description`, { cache: 'no-store' })
     .then(res => res.json())
     .catch(() => { throw new Error() })
 }
-module.exports={fetchItemDetail,fetchDescription, fetchSearchItems}
+module.exports={fetchItemDetail,fetchItemDescription, fetchSearchItems}
