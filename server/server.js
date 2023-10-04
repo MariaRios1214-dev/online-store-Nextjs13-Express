@@ -19,7 +19,8 @@ app.get("/api/items", async (req, res) => {
   const { q } = req.query;
   const { results } = await fetchSearchItems(q);
 
-  const listItemsResult = results.slice(0, 4).map((item) => {
+  const listItemsResult =[] 
+  results.map((item) => {
     const { free_shipping } = item.shipping;
 
     itemProps.id = item.id;
@@ -29,12 +30,11 @@ app.get("/api/items", async (req, res) => {
     itemProps.condition = item.condition;
     itemProps.free_shipping = free_shipping;
     itemProps.sold_quantity = item.sold_quantity;
-
-    return itemProps;
-  });
+    listItemsResult.push({...itemProps});
+  }  );
   return res.json({
     author,
-    items: [...listItemsResult],
+    items: listItemsResult.slice(0, 4)
   });
 });
 

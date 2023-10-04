@@ -10,7 +10,7 @@ export default function CardItem ({ item, path }) {
         <div className={styles.cardItem__article_detail}>
           <div>
             <p className={styles.detail_price}>
-              ${item.price.amount}
+              ${item.price}
             </p>
             {
         item.free_shipping &&
