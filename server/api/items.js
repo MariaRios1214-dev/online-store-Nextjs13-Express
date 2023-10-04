@@ -1,5 +1,7 @@
-const fetchSearchItems = async (id) => {
-  return fetch('https://api.mercadolibre.com/sites/MLA/search?q=apple', { cache: 'no-store' })
+const { default: Error } = require("next/error")
+
+const fetchSearchItems = async (search) => {
+  return fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${search}`, { cache: 'no-store' })
     .then(res => res.json())
     .catch(() => { throw new Error() })
 }

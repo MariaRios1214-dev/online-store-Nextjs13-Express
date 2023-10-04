@@ -1,10 +1,9 @@
 const author = {
-  "name": 'Fernanda Rios',
+  "name": 'Fernanda',
   "lastname": 'Rios'
 }
-const itemDetail = {
-  "author": author,
-  "item": {
+
+const itemProps = {
   "id": String,
   "title": String,
   "price": Number,
@@ -13,7 +12,6 @@ const itemDetail = {
   "free_shipping": Boolean,
   "sold_quantity": Number,
   "description": String,
-  }
 }
 
-module.exports={itemDetail}
+module.exports={ author, itemProps}
