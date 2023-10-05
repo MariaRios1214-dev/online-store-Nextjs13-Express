@@ -5,8 +5,7 @@
   flex-direction: column;
   border-radius: 4px;
   background: $color-ffffff;
-
-
+  flex-wrap: wrap;
   .detail_item {
     display: flex;
     justify-content: space-evenly;
@@ -14,17 +13,11 @@
     gap: 32px;
     background: $color-ffffff;
     padding: 32px;
-
-    img {
-      width: 100%;
-      flex-grow: 2;
-    }
-
+    flex-wrap: wrap;
     &_info {
+      flex-shrink: 1;
+    width: 30%;
       gap: 0 16px;
-      flex-grow: 1;
-      width: 45%;
-
       &__conditions {
         margin-bottom: 16px;
         font-size: 14px;
@@ -38,19 +31,21 @@
       &__price {
         font-size: 46px;
         padding-bottom: 32px;
-
       }
     }
   }
-  .description_item{
+
+  .description_item {
     padding: 32px;
     width: 80%;
     position: relative;
-    &__title{
+
+    &__title {
       font-size: 28px;
       padding-bottom: 32px;
     }
-    &__text{
+
+    &__text {
       font-size: 16px;
     }
   }
