@@ -32,31 +32,42 @@ describe('template spec', () => {
 
     cy.get('#form_input__search').submit()
   })
+})
+describe('when the user can go to detail item', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/')
+    cy.get('#input__search')
+      .type('autos clasicos')
 
-  describe('when the user can go to detail item', () => {
-    beforeEach(() => {
-      cy.get('[placeholder="Nunca dejes de buscar"]')
-        .type('autos clasicos')
-
-      cy.get('#form_input__search').submit()
-    })
-
-    it('click into card item', () => {
-      cy.get('#cardItem__article-link')
-        .click()
-    })
-
-    it('click into logo, go to home', () => {
-      cy.get('#cardItem__article-link')
-        .click()
-
-      cy.get('[alt="nav-logo-ml"]').click()
-    })
+    cy.get('#form_input__search').submit()
   })
 
-  describe('Go to any view', () => {
-    it('visit any route, go to screen', () => {
-      cy.visit('http://localhost:3000/items/MLA1133297186')
-    })
+  it('click into card item', () => {
+    cy.get('#cardItem__article-link')
+      .click()
+  })
+
+  it('click into logo, go to home', () => {
+    cy.get('#cardItem__article-link')
+      .click()
+
+    cy.get('[alt="nav-logo-ml"]').click()
   })
 })
+
+describe('Go to any view', () => {
+  it('visit any route, go to screen', () => {
+    cy.visit('http://localhost:3000/items/MLA1133297186')
+  })
+})
+describe('Failed service, characters specials ', () => {
+  
+  it('special characters and submittext and submit', () => {
+    cy.visit('http://localhost:3000/')
+    cy.get('#input__search')
+      .type('3$%"##%..')
+
+    cy.get('#form_input__search').submit()
+  })
+})
+

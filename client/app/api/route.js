@@ -10,7 +10,6 @@ export const getListItems = async (search) =>
         return resolve(items)
       })
       .catch((error) => {
-        console.error({ error })
-        reject(new Error('Error  response data'))
+        reject( new Error('Failed to fetch data'))
       })
   })

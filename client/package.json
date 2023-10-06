@@ -7,17 +7,19 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "next jest",
     "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "env": {
-      "cypress/globals":true
+      "cypress/globals": true
     },
     "plugins": [
       "cypress"
     ]
   },
   "dependencies": {
+    "jest": "^29.7.0",
     "next": "13.5.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",

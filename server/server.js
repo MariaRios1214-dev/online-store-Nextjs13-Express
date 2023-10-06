@@ -17,10 +17,11 @@ app.use(cors({
 }));
 
 app.get("/api/items", async (req, res) => {
+  const listItemsResult = []
+
   const { q } = req.query;
   const { results } = await fetchSearchItems(q);
-
-  const listItemsResult = []
+  if(results && results.length === 0)   return res.status(500).send({ error: "resource not found" })
   results.map((item) => {
     if (item) {
       const { free_shipping } = item.shipping;
@@ -48,7 +49,7 @@ app.get("/api/items/:id", async (req, res) => {
   const { id } = req.params;
   const itemDetailById = await fetchItemDetail(id);
   const itemDescriptionById = await fetchItemDescription(id);
-  if (itemDetailById) {
+  if(itemDetailById && itemDetailById.error|| itemDescriptionById && itemDescriptionById.error)   return   res.status(500).send({ error: "resource not found" });
 
     const { pictures, shipping, seller_address } = itemDetailById;
     const { city, state } = seller_address
@@ -65,7 +66,6 @@ app.get("/api/items/:id", async (req, res) => {
     itemProps.description = itemDescriptionById.plain_text;
 
     res.json({ author, item: itemProps });
-  }
 });
 
 app.listen(PORT, () => {
