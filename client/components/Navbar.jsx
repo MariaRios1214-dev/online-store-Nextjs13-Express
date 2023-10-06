@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import logo from '@/assets/img/logo__large_plus.png'
 import Link from 'next/link'
 import InputSearch from './InputSearch'
 import styles from '@/styles/navbar.module.scss'

@@ -1,20 +1,44 @@
 'use client'
 import styles from '@/styles/inputSearch.module.scss'
-import { useState } from 'react'
+import SearchIcon from '@/assets/icons/SearchIcon'
 
-export default function InputSearch ({ placeholder, icon }) {
-  const [query, setQuery] = useState('')
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
-  const handleSubmit = async (e) => e.preventDefault()
+const placeholderInput = 'Nunca dejes de buscar'
+
+export default function InputSearch () {
+  const [value, setValue] = useState('')
+  const path = usePathname()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const search = e.currentTarget.search.value
+    setValue(search)
+    if (!search) return
+    window.location.href = `/items?search=${search}`
+  }
+
+  useEffect(() => {
+    setValue(sessionStorage.getItem('search'))
+    if (path === '/') {
+      sessionStorage.removeItem('search')
+      setValue('')
+    }
+  }, [path])
+
   return (
-    <form onSubmit={handleSubmit} className={styles.form_input__search}>
+    <form onSubmit={handleSubmit} id='form_input__search' className={styles.form_input__search}>
       <input
         className={styles.input__search}
+        id='input__search'
         type='text'
-        placeholder={placeholder}
-        onChange={e => setQuery(e.target.value)}
-        value={query}
+        placeholder={placeholderInput}
+        name='search'
+        onChange={e => sessionStorage.setItem('search', e.target.value)}
+        defaultValue={value}
       />
+      <SearchIcon />
     </form>
   )
 }
