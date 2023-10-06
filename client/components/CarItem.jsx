@@ -5,6 +5,7 @@ import styles from '@/styles/cardItem.module.scss'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { getListItems } from '@/app/api/route'
+import CarIcon from '@/assets/icons/CarIcon'
 
 export default function CardItem () {
   const searchParams = useSearchParams()
@@ -28,6 +29,7 @@ export default function CardItem () {
           href={`/items/${item.id}`}
           key={item.id}
           className={styles.cardItem_link}
+          id='cardItem__article-link'
         >
           <article className={styles.cardItem__article}>
             <Image
@@ -38,13 +40,16 @@ export default function CardItem () {
               alt={item.title}
             />
             <div className={styles.cardItem__article_detail}>
-              <div>
+              <div className={styles.detail_content}>
                 <p className={styles.detail_price}>${item.price}</p>
-                {item.freeShipping && <small> imagen carrito</small>}
+                {item.freeShipping &&
+                  <small>
+                    <CarIcon />
+                  </small>}
               </div>
               <p className={styles.detail_title}>{item.title}</p>
             </div>
-            <p className={styles.detail_location}>{item.state_name}</p>
+            <p className={styles.detail_location}>{item.address.cityName}</p>
           </article>
         </Link>
       )}

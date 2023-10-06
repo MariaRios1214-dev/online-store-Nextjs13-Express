@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 const placeholderInput = 'Nunca dejes de buscar'
 
 export default function InputSearch () {
-  const [value, setValue] = useState()
+  const [value, setValue] = useState('')
   const path = usePathname()
 
   const handleSubmit = (e) => {
@@ -21,16 +21,17 @@ export default function InputSearch () {
 
   useEffect(() => {
     setValue(sessionStorage.getItem('search'))
-    if (path === '/' && value !== '') {
+    if (path === '/') {
       sessionStorage.removeItem('search')
       setValue('')
     }
   }, [path])
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form_input__search}>
+    <form onSubmit={handleSubmit} id='form_input__search' className={styles.form_input__search}>
       <input
         className={styles.input__search}
+        id='input__search'
         type='text'
         placeholder={placeholderInput}
         name='search'

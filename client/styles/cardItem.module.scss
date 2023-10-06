@@ -13,18 +13,24 @@
   border-top: 1px solid $color-EEEEEE;
   border-radius: 4px;
   min-width: 180px;
-
-  // &_img{
-  //   border-radius: 4px;
-  //   object-fit: contain;
-  //   object-position: center;
-  // }
+  
   &_detail{
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
     gap:  16px ;
     width: 60%;
+    svg{
+      width: 20px;
+      height: 20px;
+      padding: 2px;
+      border-radius: 50%;
+      background: $color-33b873;
+    }
+    .detail_content{
+      display: flex;
+    gap: 16px;
+    }
     .detail_price{
       font-size: 24px;
     }
