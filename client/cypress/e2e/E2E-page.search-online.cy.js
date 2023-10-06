@@ -53,4 +53,10 @@ describe('template spec', () => {
       cy.get('[alt="nav-logo-ml"]').click()
     })
   })
+
+  describe('Go to any view', () => {
+    it('visit any route, go to screen', () => {
+      cy.visit('http://localhost:3000/items/MLA1133297186')
+    })
+  })
 })

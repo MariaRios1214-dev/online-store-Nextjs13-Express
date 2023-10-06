@@ -48,21 +48,24 @@ app.get("/api/items/:id", async (req, res) => {
   const { id } = req.params;
   const itemDetailById = await fetchItemDetail(id);
   const itemDescriptionById = await fetchItemDescription(id);
-  const { pictures, shipping, seller_address } = itemDetailById;
-  const { city, state } = seller_address
+  if (itemDetailById) {
 
-  itemProps.id = itemDetailById.id;
-  itemProps.title = itemDetailById.title;
-  itemProps.price = itemDetailById.price;
-  itemProps.picture = pictures[0].url;
-  itemProps.condition = itemDetailById.condition;
-  itemProps.freeShipping = shipping.free_shipping;
-  itemProps.soldQuantity = itemDetailById.sold_quantity;
-  itemProps.address.cityName = city.name;
-  itemProps.address.state = state.name;
-  itemProps.description = itemDescriptionById.plain_text;
+    const { pictures, shipping, seller_address } = itemDetailById;
+    const { city, state } = seller_address
 
-  res.json({ author, item: itemProps });
+    itemProps.id = itemDetailById.id;
+    itemProps.title = itemDetailById.title;
+    itemProps.price = itemDetailById.price;
+    itemProps.picture = pictures[0].url;
+    itemProps.condition = itemDetailById.condition;
+    itemProps.freeShipping = shipping.free_shipping;
+    itemProps.soldQuantity = itemDetailById.sold_quantity;
+    itemProps.address.cityName = city.name;
+    itemProps.address.state = state.name;
+    itemProps.description = itemDescriptionById.plain_text;
+
+    res.json({ author, item: itemProps });
+  }
 });
 
 app.listen(PORT, () => {
